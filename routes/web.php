@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('posts', [
+        'posts' => Post::fileList()
+    ]);
+});
+
+
+Route::get('posts/{post}', function ($slug) {
+    return view('post', [
+        'post' => Post::find($slug)
+    ]);
 });

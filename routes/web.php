@@ -18,13 +18,13 @@ use Illuminate\Support\Facades\File;
 
 Route::get('/', function () {
     return view('posts', [
-        'posts' => Post::fileList()
+        'posts' => Post::all()
     ]);
 });
 
 
-Route::get('posts/{post}', function ($slug) {
+Route::get('posts/{post}', function ($id) {
     return view('post', [
-        'post' => Post::find($slug)
+        'post' => Post::find($id)
     ]);
 });
